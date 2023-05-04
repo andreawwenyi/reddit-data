@@ -1,3 +1,6 @@
+"""
+The following code is modified from https://medium.com/@MaLiN2223/getting-data-from-pushshift-archives-b3bc0e487359
+"""
 import os
 import argparse
 
