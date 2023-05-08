@@ -1,5 +1,9 @@
 import argparse
 import os
+import pathlib
+current_file_location = str(pathlib.Path(__file__).parent.resolve())
+
+PROJECT_FOLDER = current_file_location.split("/")[-1]
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-py", "--py_func", required=True, type=str)
@@ -23,7 +27,7 @@ for year in args.years:
     #echo "Activating huggingface environment"
     #source /share/apps/anaconda3/2021.05/bin/activate huggingface
     echo "Beginning script"
-    cd /share/luxlab/reddit
+    cd /share/luxlab/andrea/{PROJECT_FOLDER}
     python3 {args.py_func} --t C --start-year {year} --end-year {year}
                 """
             )
@@ -33,7 +37,7 @@ for year in args.years:
                 #echo "Activating huggingface environment"
                 #source /share/apps/anaconda3/2021.05/bin/activate huggingface
                 echo "Beginning script"
-    		cd /share/luxlab/reddit
+    		cd /share/luxlab/andrea/{PROJECT_FOLDER}
     		python3 {args.py_func} --t C --start-year {year} --end-year {year} --{variable_name} {variable_value}
                             """
         )
@@ -42,8 +46,8 @@ for year in args.years:
         f.write(
             f"""#!/bin/bash
 #SBATCH -J {filename}                            # Job name
-#SBATCH -o /share/luxlab/reddit/logs/{filename}_%j.out # output file (%j expands to jobID)
-#SBATCH -e /share/luxlab/reddit/logs/{filename}_%j.err # error log file (%j expands to jobID)
+#SBATCH -o /share/luxlab/andrea/{PROJECT_FOLDER}logs/{filename}_%j.out # output file (%j expands to jobID)
+#SBATCH -e /share/luxlab/andrea/{PROJECT_FOLDER}logs/{filename}_%j.err # error log file (%j expands to jobID)
 #SBATCH --mail-type=ALL                        # Request status by email
 #SBATCH --mail-user=aww66@cornell.edu          # Email address to send results to.
 #SBATCH -N 1                                   # Total number of nodes requested
@@ -52,7 +56,7 @@ for year in args.years:
 #SBATCH --mem=50G                             # server memory requested (per node)
 #SBATCH -t 20:00:00                            # Time limit (hh:mm:ss)
 #SBATCH --partition=default_partition          # Request partition
-/share/luxlab/reddit/{filename}.sh
+/share/luxlab/andrea/{PROJECT_FOLDER}/{filename}.sh
             """
         )
     os.system(f"chmod 775 {filename}.sh")
