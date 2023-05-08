@@ -51,7 +51,7 @@ for year in args.years:
 #SBATCH --mail-type=ALL                        # Request status by email
 #SBATCH --mail-user=aww66@cornell.edu          # Email address to send results to.
 #SBATCH -N 1                                   # Total number of nodes requested
-#SBATCH -n 4                                  # Total number of cores requested
+#SBATCH -n 8                                  # Total number of cores requested
 #SBATCH --get-user-env                         # retrieve the users login environment
 #SBATCH --mem=50G                             # server memory requested (per node)
 #SBATCH -t 20:00:00                            # Time limit (hh:mm:ss)
