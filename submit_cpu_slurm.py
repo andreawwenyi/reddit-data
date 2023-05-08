@@ -8,7 +8,7 @@ PROJECT_FOLDER = current_file_location.split("/")[-1]
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-py", "--py_func", required=True, type=str)
-parser.add_argument("-m", "--months", required=True, type=str, nargs="2")
+parser.add_argument("-m", "--months", required=True, type=str, nargs=2)
 parser.add_argument("-v", "--variable", type=str)
 args = parser.parse_args()
 variable_name = None
