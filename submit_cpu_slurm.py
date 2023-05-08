@@ -47,8 +47,8 @@ with open(f"./{filename}.sub", "w") as f:
     f.write(
         f"""#!/bin/bash
 #SBATCH -J {filename}                            # Job name
-#SBATCH -o /share/luxlab/andrea/{PROJECT_FOLDER}logs/{filename}_%j.out # output file (%j expands to jobID)
-#SBATCH -e /share/luxlab/andrea/{PROJECT_FOLDER}logs/{filename}_%j.err # error log file (%j expands to jobID)
+#SBATCH -o /share/luxlab/andrea/{PROJECT_FOLDER}/logs/{filename}_%j.out # output file (%j expands to jobID)
+#SBATCH -e /share/luxlab/andrea/{PROJECT_FOLDER}/logs/{filename}_%j.err # error log file (%j expands to jobID)
 #SBATCH --mail-type=ALL                        # Request status by email
 #SBATCH --mail-user=aww66@cornell.edu          # Email address to send results to.
 #SBATCH -N 1                                   # Total number of nodes requested
