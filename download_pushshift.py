@@ -22,7 +22,7 @@ def trigger_wget(file_type, url, year, month, ext):
 
 
 def thread_me(worker, jobs):
-    pool = ThreadPool(4)
+    pool = ThreadPool(6)
     for r in tqdm.tqdm(pool.imap_unordered(worker, jobs), total=len(jobs)):
         pass  # do nothing
     pool.close()
