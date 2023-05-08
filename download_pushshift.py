@@ -89,8 +89,8 @@ def collect_comments(start_month, end_month):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--type", dest="t", action="store", required=True)
-    parser.add_argument("--start-month", type=int, required=True)
-    parser.add_argument("--end-month", type=int, required=True)
+    parser.add_argument("--start-month", type=str, required=True)
+    parser.add_argument("--end-month", type=str, required=True)
     args = parser.parse_args()
     if args.t == "S":
         # submissions(args.start_month, args.end_month)
